@@ -1,14 +1,26 @@
-const HELP = `
-superspaces — Spawn and search windows for worktrees
+import * as p from "@clack/prompts";
+import { COMMANDS as CONFIG_COMMANDS } from "./config/help";
+import { COMMANDS as WORKTREE_COMMANDS } from "./worktree/help";
 
-Usage:
-  superspaces config --- Help for config subcommands
-  superspaces config open --- Open the installed config file
-  superspaces config template --- Creates a config file with the correct schema and opens it in the $EDITOR application
-  superspaces config install --- Installs the config
-  superspaces worktree --- Help for the worktree subcommands
-  superspaces worktree open <branch_name or plugin_input> --- Open a workspace for a ticket
-  superspaces worktree close <branch_name or plugin_input> --- Remove a workspace's worktree and close the windows opened for it
-  superspaces search <query> --- Search worktrees with open windows
-  superspaces --- Show this help message
-`.trim();
+const COMMANDS = [
+	{ cmd: "superspaces config", desc: "Help for config subcommands" },
+	...CONFIG_COMMANDS,
+	{ cmd: "superspaces worktree", desc: "Help for the worktree subcommands" },
+	...WORKTREE_COMMANDS,
+	{
+		cmd: "superspaces search <query>",
+		desc: "Search worktrees with open windows",
+	},
+];
+
+export function showHelp() {
+	p.intro("superspaces — Spawn and search windows for worktrees");
+
+	const usage = COMMANDS.map(
+		({ cmd, desc }) => `  ${cmd}\n    ${desc}`,
+	).join("\n\n");
+
+	p.note(usage, "Usage");
+
+	p.outro("Run any command with no arguments for more help.");
+}
