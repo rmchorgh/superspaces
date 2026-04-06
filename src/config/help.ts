@@ -1,22 +1,21 @@
 import * as p from "@clack/prompts";
 
-export const COMMANDS = [
-	{ cmd: "superspaces config open", desc: "Open the installed config file" },
-	{
-		cmd: "superspaces config template",
-		desc: "Creates a config file with the correct schema and opens it in the $EDITOR application",
-	},
-	{ cmd: "superspaces config install", desc: "Installs the config" },
+const COMMANDS = [
+  { cmd: "superspaces config open", desc: "Open the installed config file" },
+  {
+    cmd: "superspaces config template",
+    desc: "Creates a config file with the correct schema and opens it in the $EDITOR application",
+  },
+  { cmd: "superspaces config install", desc: "Installs the config" },
 ];
 
 export function showConfigHelp() {
-	p.intro("superspaces config — Manage configuration");
+  p.intro("superspaces config");
 
-	const usage = COMMANDS.map(
-		({ cmd, desc }) => `  ${cmd}\n    ${desc}`,
-	).join("\n\n");
+  const usage = COMMANDS.map(({ cmd, desc }) => `  ${cmd}\n    ${desc}`).join(
+    "\n\n",
+  );
 
-	p.note(usage, "Usage");
-
-	p.outro();
+  p.note(usage, "Usage");
+  p.outro("Manage configuration");
 }

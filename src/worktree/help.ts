@@ -1,24 +1,23 @@
 import * as p from "@clack/prompts";
 
-export const COMMANDS = [
-	{
-		cmd: "superspaces worktree open <branch>",
-		desc: "Open a workspace for a ticket",
-	},
-	{
-		cmd: "superspaces worktree close <branch>",
-		desc: "Remove a workspace's worktree and close its windows",
-	},
+const COMMANDS = [
+  {
+    cmd: "superspaces worktree open <branch>",
+    desc: "Open a workspace for a ticket",
+  },
+  {
+    cmd: "superspaces worktree close <branch>",
+    desc: "Remove a workspace's worktree and close its windows",
+  },
 ];
 
 export function showWorktreeHelp() {
-	p.intro("superspaces worktree — Manage worktree workspaces");
+  p.intro("superspaces worktree");
 
-	const usage = COMMANDS.map(
-		({ cmd, desc }) => `  ${cmd}\n    ${desc}`,
-	).join("\n\n");
+  const usage = COMMANDS.map(({ cmd, desc }) => `  ${cmd}\n    ${desc}`).join(
+    "\n\n",
+  );
 
-	p.note(usage, "Usage");
-
-	p.outro();
+  p.note(usage, "Usage");
+  p.outro("Manage worktree workspaces");
 }

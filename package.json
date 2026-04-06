@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "bin": {
-    "superspaces": "src/cli.ts"
+    "superspaces": "src/index.ts"
   },
   "scripts": {
     "install-cli": "bun link",
