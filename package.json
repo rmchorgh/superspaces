@@ -1,0 +1,26 @@
+{
+  "name": "superspaces",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "superspaces": "src/cli.ts"
+  },
+  "scripts": {
+    "install-cli": "bun link",
+    "check": "bunx biome check --write",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.10",
+    "@types/bun": "latest",
+    "husky": "^9.1.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.2.0",
+    "zod": "^4.3.6"
+  }
+}
