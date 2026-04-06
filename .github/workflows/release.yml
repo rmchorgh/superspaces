@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun build --compile src/index.ts --outfile superspaces
+      - run: gh release upload ${{ github.event.release.tag_name }} superspaces
+        env:
+          GH_TOKEN: ${{ github.token }}

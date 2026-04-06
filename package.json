@@ -7,6 +7,7 @@
     "superspaces": "src/index.ts"
   },
   "scripts": {
+    "binary": "bun build --compile src/index.ts --outfile out/superspaces",
     "install-cli": "bun link",
     "check": "bunx biome check --write",
     "prepare": "husky"

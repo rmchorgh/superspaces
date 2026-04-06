@@ -50,7 +50,7 @@ export const zConfig = z.object({
   $schema: z
     .string()
     .optional()
-    .default(`${Bun.env.HOME}/.config/superspaces/`)
+    .default(`https://superspaces.richardmch.org/schema.json`)
     .describe("Path to the JSON schema file"),
   branchFormat: zBranch,
   defaultRepositoryPath: z
