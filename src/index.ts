@@ -6,6 +6,7 @@ import { template } from "~/config/template";
 import { install } from "~/config/install";
 import { showWorktreeHelp } from "~/worktree/help";
 import { openWorkspace } from "~/worktree/open";
+import { search } from "~/search";
 
 const [command, subcommand, ...args] = process.argv.slice(2);
 
@@ -46,6 +47,15 @@ switch (command) {
         showWorktreeHelp();
     }
     break;
+  case "search": {
+    const query = subcommand;
+    if (!query) {
+      p.log.error("Usage: superspaces search <query>");
+      process.exit(1);
+    }
+    await search(query);
+    break;
+  }
   default:
     showHelp();
 }
